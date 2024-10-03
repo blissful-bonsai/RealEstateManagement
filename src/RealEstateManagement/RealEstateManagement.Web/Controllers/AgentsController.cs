@@ -13,7 +13,7 @@ namespace RealEstateManagement.Web
     {
         private readonly RealEstateDbContext _context;
 
-        public AgentsController(RealEstateDbContext context)
+        public AgentsController(RealEstateDbContext context) // When a http request gets here, the request requires a context, the builder.Services list checks to see if there is already an initialized object
         {
             _context = context;
         }

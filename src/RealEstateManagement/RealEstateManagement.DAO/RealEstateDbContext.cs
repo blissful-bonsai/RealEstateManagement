@@ -1,19 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using RealEstateManagement.Web;
+using RealEstateManagement.DAO.Configurations;
 
-namespace RealEstateManagement.DAO;
-
+namespace RealEstateManagement.Web;
+// Having access privileges here would be good
 public partial class RealEstateDbContext : DbContext
 {
-    public RealEstateDbContext()
+    private string ConnectionString { get; set; }
+    public RealEstateDbContext(IOptions<ConnectionStrings> options)
     {
+        ConnectionStrings connections = options.Value;
+        ConnectionString = connections.Master;
     }
 
-    public RealEstateDbContext(DbContextOptions<RealEstateDbContext> options)
-        : base(options)
+    public RealEstateDbContext(IOptions<ConnectionStrings> optionsObject, DbContextOptions<RealEstateDbContext> options)
+     : base(options)
     {
+        ConnectionStrings connections = optionsObject.Value;
+        ConnectionString = connections.Master;
     }
 
     public virtual DbSet<Agent> Agents { get; set; }
@@ -26,8 +33,10 @@ public partial class RealEstateDbContext : DbContext
 
     public virtual DbSet<Property> Properties { get; set; }
 
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //    => optionsBuilder.UseSqlServer("Server=localhost,1433;Database=RealEstateDb;User Id=sa;Password=EasyPass123;TrustServerCertificate=True");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer(ConnectionString);
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

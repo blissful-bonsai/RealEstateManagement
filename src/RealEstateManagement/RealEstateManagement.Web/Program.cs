@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using RealEstateManagement.DAO.Configurations;
+using RealEstateManagement.Web;
 namespace RealEstateManagement.DAO;
 
 public class Program
@@ -10,13 +12,14 @@ public class Program
         // Add services to the container.
         builder.Services.AddControllersWithViews();
 
+        // Dependency injection, automatic object creation
+        builder.Services.AddTransient<RealEstateDbContext>();
 
-        builder.Services.AddDbContext<RealEstateDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+        builder.Services.Configure<ConnectionStrings>( 
+            builder.Configuration.GetSection("ConnectionStrings")); // This initializes an object, which is passed in the RealEstateDbContexdt constructor 
+        
 
         var app = builder.Build();
-
-
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
