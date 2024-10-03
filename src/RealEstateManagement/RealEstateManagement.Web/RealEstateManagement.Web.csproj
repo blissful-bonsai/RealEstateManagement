@@ -16,6 +16,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RealEstateManagement.DAO\RealEstateManagement.DAO.csproj" />
+    <ProjectReference Include="..\RealEstateManagement.Domain\RealEstateManagement.Domain.csproj" />
   </ItemGroup>
 
 </Project>

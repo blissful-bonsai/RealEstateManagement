@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using RealEstateManagement.Web;
 
-namespace RealEstateManagement.Web;
+namespace RealEstateManagement.DAO;
 
 public partial class RealEstateDbContext : DbContext
 {
@@ -25,8 +26,8 @@ public partial class RealEstateDbContext : DbContext
 
     public virtual DbSet<Property> Properties { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=localhost,1433;Database=RealEstateDb;User Id=sa;Password=EasyPass123;TrustServerCertificate=True");
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //    => optionsBuilder.UseSqlServer("Server=localhost,1433;Database=RealEstateDb;User Id=sa;Password=EasyPass123;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
