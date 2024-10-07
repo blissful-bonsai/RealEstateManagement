@@ -12,7 +12,9 @@ namespace RealEstateManagement.Web.Models
         [MinLength(11, ErrorMessage = "Cpf consists of 11 numbers")]
         public string Cpf { get; set; }
 
-        public string? Phone { get; set; }
+        [Required]
+        [MinLength(11, ErrorMessage = "Invalid phone number")]
+        public string? Phone { get; set; } // (xx) xxxxx-xxxx
 
         [Required]
         [EmailAddress(ErrorMessage = "Invalid email address")]

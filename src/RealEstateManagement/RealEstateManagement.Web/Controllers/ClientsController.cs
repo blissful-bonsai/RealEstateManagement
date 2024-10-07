@@ -60,6 +60,118 @@ namespace RealEstateManagement.Web.Views
                 }
             }
             return View(client);
-        } 
+        }
+
+
+        //GET: Edit
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var clientsVo = _clientService.GetClients();
+            var client = clientsVo.FirstOrDefault(c => c.ClientId == id);
+            if(client == null)
+            {
+                return NotFound();
+            }
+            return View(client.ToClientViewModel());
+        }
+
+        //POST: Edit
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, ClientViewModel client)
+        {
+            if(id != client.ClientId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _clientService.SaveClient(client.ToClientVo());
+                    return RedirectToAction(nameof(Index));
+                }
+                catch(Exception ex)
+                {
+                    ModelState.AddModelError("", $"Error when editing : {ex.Message}");
+                }
+            }
+            return View(client);
+        }
+
+        //GET: Remove
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var client = _clientService.GetById(id);
+            if(client == null)
+            {
+                return NotFound();
+            }
+
+            return View(client.ToClientViewModel());
+        }
+        //Post: Remove
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            try
+            {
+                _clientService.Remove(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", $"Error when editing: { ex.Message}");
+            }
+            return View(_clientService.GetById(id).ToClientViewModel());
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
