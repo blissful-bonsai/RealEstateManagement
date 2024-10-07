@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using RealEstateManagement.Domain.ClientModule;
 
 namespace RealEstateManagement.Web;
 

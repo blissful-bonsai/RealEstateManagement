@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using RealEstateManagement.Web;
 
-namespace RealEstateManagement.Web;
+namespace RealEstateManagement.Domain.ClientModule;
 
 public partial class Client
 {

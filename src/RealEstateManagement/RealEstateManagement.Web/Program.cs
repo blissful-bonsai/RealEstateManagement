@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using RealEstateManagement.DAO.Configurations;
-using RealEstateManagement.Web;
+using RealEstateManagement.DAO.Repositories.EF;
+using RealEstateManagement.Domain.ClientModule;
+
 namespace RealEstateManagement.DAO;
 
 public class Program
@@ -13,13 +15,20 @@ public class Program
         builder.Services.AddControllersWithViews();
 
         // Dependency injection, automatic object creation
+        // Repos
         builder.Services.AddTransient<RealEstateDbContext>();
+        builder.Services.AddTransient<IClientService, ClientService>();
+        builder.Services.AddTransient<IClientRepository, ClientRepository>();
+
 
         builder.Services.Configure<ConnectionStrings>( 
             builder.Configuration.GetSection("ConnectionStrings")); // This initializes an object, which is passed in the RealEstateDbContexdt constructor 
         
 
         var app = builder.Build();
+
+        var db = app.Services.GetService<RealEstateDbContext>();
+        db.Seed();
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
@@ -34,7 +43,7 @@ public class Program
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=Agents}/{action=Index}/{id?}");
+            pattern: "{controller=Clients}/{action=Index}/{id?}");
 
         app.Run();
     }

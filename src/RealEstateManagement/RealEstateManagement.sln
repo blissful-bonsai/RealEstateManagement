@@ -11,13 +11,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - DAO", "3 - DAO", "{23D6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Testing", "4 - Testing", "{E2A8F14D-B62C-4B35-8D1D-AC95440CBD9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateManagement.Domain", "RealEstateManagement.Domain\RealEstateManagement.Domain.csproj", "{29D4A6FF-4F02-43C5-8254-5134F2352ED4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstateManagement.Domain", "RealEstateManagement.Domain\RealEstateManagement.Domain.csproj", "{29D4A6FF-4F02-43C5-8254-5134F2352ED4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateManagement.DAO", "RealEstateManagement.DAO\RealEstateManagement.DAO.csproj", "{CD9FDA7F-9B1C-4B10-B230-5079B673E611}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstateManagement.DAO", "RealEstateManagement.DAO\RealEstateManagement.DAO.csproj", "{CD9FDA7F-9B1C-4B10-B230-5079B673E611}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateManagement.Web", "RealEstateManagement.Web\RealEstateManagement.Web.csproj", "{27EF6E6C-C44F-44BA-87C7-FEF69298D9B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstateManagement.Web", "RealEstateManagement.Web\RealEstateManagement.Web.csproj", "{27EF6E6C-C44F-44BA-87C7-FEF69298D9B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealEstateManagement.Testing", "RealEstateManagement.Testing\RealEstateManagement.Testing.csproj", "{CEF8BF55-0483-41D0-A4F4-044A451E4D73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RealEstateManagement.Testing", "RealEstateManagement.Testing\RealEstateManagement.Testing.csproj", "{CEF8BF55-0483-41D0-A4F4-044A451E4D73}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes by class", "Notes by class", "{3B226D1F-C174-4475-AD58-B8A457540D5B}"
+	ProjectSection(SolutionItems) = preProject
+		class_52.txt = class_52.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

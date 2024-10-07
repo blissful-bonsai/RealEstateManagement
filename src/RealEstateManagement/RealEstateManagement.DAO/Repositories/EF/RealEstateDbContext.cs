@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using RealEstateManagement.Web;
 using RealEstateManagement.DAO.Configurations;
+using RealEstateManagement.Domain.ClientModule;
+using RealEstateManagement.Web;
 
-namespace RealEstateManagement.Web;
+namespace RealEstateManagement.DAO.Repositories.EF;
 // Having access privileges here would be good
 public partial class RealEstateDbContext : DbContext
 {
@@ -142,4 +143,9 @@ public partial class RealEstateDbContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+    public void Seed()
+    {
+        Database.EnsureCreated();
+    }
 }
