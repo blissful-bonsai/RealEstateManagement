@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using RealEstateManagement.DAO.Configurations;
+using RealEstateManagement.Domain.AgentModule;
 using RealEstateManagement.Domain.ClientModule;
 using RealEstateManagement.Web;
 

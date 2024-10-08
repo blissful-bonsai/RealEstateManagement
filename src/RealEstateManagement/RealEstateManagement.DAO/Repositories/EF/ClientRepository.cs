@@ -1,5 +1,5 @@
 ﻿using RealEstateManagement.Domain.ClientModule;
-
+// IClientRepository: IClientRepo
 namespace RealEstateManagement.DAO.Repositories.EF
 {
     public class ClientRepository : IClientRepository

@@ -1,4 +1,4 @@
-We wont depend on DbContext to acccess data anymore
+﻿We wont depend on DbContext to acccess data anymore
 We will use IClientRepository
 
 
@@ -17,6 +17,7 @@ Why use ViewModel? Are the partial/virtual keyword related to that?
 This helps with solid. // o Open to modifications
 
 
+Controller → ClientService → ClientRepository → Database
 
 
 

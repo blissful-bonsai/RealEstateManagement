@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RealEstateManagement.DAO;
 using RealEstateManagement.DAO.Repositories.EF;
+using RealEstateManagement.Domain.AgentModule;
 
 namespace RealEstateManagement.Web
 {
