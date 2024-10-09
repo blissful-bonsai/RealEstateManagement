@@ -7,7 +7,7 @@ public interface IAgentRepository
     void CreateAgent(Agent Agent);
     List<Agent> GetAllAgents();
     void SaveAgent(Agent Agent);
-    Agent GetAgent(string AgentId);
+    Agent GetAgent(int AgentId);
     void Remove(int id);
     bool GetAgentByCpf(string agentCpf, int agentId);
     bool GetAgentByCreci(string agentCreci, int agentId);

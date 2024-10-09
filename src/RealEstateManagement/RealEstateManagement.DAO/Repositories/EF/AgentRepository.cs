@@ -1,4 +1,6 @@
-﻿using RealEstateManagement.Domain.AgentModule;
+﻿using Microsoft.EntityFrameworkCore;
+using RealEstateManagement.Domain.AgentModule;
+using RealEstateManagement.Domain.ClientModule;
 
 namespace RealEstateManagement.DAO.Repositories.EF
 {
@@ -15,7 +17,7 @@ namespace RealEstateManagement.DAO.Repositories.EF
         }
 
 
-        public List<Agent> GetAgents()
+        public List<Agent> GetAllAgents()
         {
             return _context.Agents.ToList();
         }
@@ -28,7 +30,30 @@ namespace RealEstateManagement.DAO.Repositories.EF
         
         public void SaveAgent(Agent agent)
         {
+            _context.Update(agent);
+            _context.SaveChanges();
+        }
 
+        public Agent GetAgent(int id)
+        {
+            return _context.Agents.FirstOrDefault(a => a.AgentId == id);
+        }
+
+        public void Remove(int id)
+        {
+            Agent agent = GetAgent(id);
+            _context.Agents.Remove(agent);
+            _context.SaveChanges();
+        }
+
+        public bool GetAgentByCpf(string agentCpf, int agentId)
+        {
+            return _context.Agents.Any(agent => string.Compare(agent.Cpf, agentCpf) == 0 && agent.AgentId != agentId);
+        }
+
+        public bool GetAgentByCreci(string agentCreci, int agentId)
+        {
+            return _context.Agents.Any(agent => string.Compare(agent.Creci, agentCreci) == 0 && agent.AgentId != agentId);
         }
 
 

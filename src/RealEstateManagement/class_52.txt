@@ -1,21 +1,10 @@
 ﻿We wont depend on DbContext to acccess data anymore
 We will use IClientRepository
 
-
 IClientService defines the rules
-
-
-# Question
-Why use var instead of bool here:
-var variable = _context.FirstOrDefault()
-
-# Question
-Why use ViewModel? Are the partial/virtual keyword related to that?
-
 
 16:34 mentions extension method, he highlights that it's important. It's basically adding new methods(behaviors) without modifying existing methods(behaviors)
 This helps with solid. // o Open to modifications
-
 
 Controller → ClientService → ClientRepository → Database
 
@@ -24,6 +13,7 @@ Controller → ClientService → ClientRepository → Database
 
 
 
+eu sei
 
 
 
