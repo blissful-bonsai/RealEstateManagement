@@ -1,9 +1,12 @@
 ﻿using RealEstateManagement.Domain.ClientModule;
 using System.ComponentModel.DataAnnotations;
-
+//
+// An extension method is a static method of a static class. The first parameter is prefixed with the this keyword, specifying the type it extends.
+// When called, it appears as if the method is a member of the extended type
+//
 namespace RealEstateManagement.Web.Models
 {
-    public class CreateClientViewModel
+    public class CreateClientViewModel // This is used in the create and edit views, as we need the DataAnnotations
     {
         [Required]
         public string Name { get; set; }
@@ -35,9 +38,22 @@ namespace RealEstateManagement.Web.Models
 
     public static class ClientViewModelExtensions
     {
-       
-        // Conversion Vo to Vm
-        public static ClientViewModel ToClientViewModel(this Client client) // Returns a ClientViewModel, defined above
+
+        public static Client ToClientVo(this CreateClientViewModel client)
+        {
+            // Mapping
+            return new Client
+            {
+                Cpf = client.Cpf,
+                Email = client.Email,
+                Name = client.Name,
+                Phone = client.Phone
+            };
+        }
+        
+        // Conversion method Client to Vm
+        // ANY Client object will now have this method, or thesE methods defined below
+        public static ClientViewModel ToClientViewModel(this Client client) // Returns a ClientViewModel, defined above. 
         {
             return new ClientViewModel
             {

@@ -7,17 +7,18 @@ namespace RealEstateManagement.Web.Views
     public class ClientsController : Controller
     {
         private readonly IClientService _clientService;
+        
+        //builder.Services.AddTransient<IClientService, ClientService>(); Present in program, what makes the constructor argument passing possible
 
         public ClientsController(IClientService clientService)
         {
             _clientService = clientService;
         }
 
-        //GetAll
+        //GetAll, Index
         public async Task<IActionResult> Index()
         {
             var clientsVo = _clientService.GetClients();
-
             return View(clientsVo.ToClientsViewModel());
         }
 
@@ -45,7 +46,7 @@ namespace RealEstateManagement.Web.Views
         }
         //Post: Create
         [HttpPost]
-        public async Task<IActionResult> Create(ClientViewModel client)
+        public async Task<IActionResult> Create(CreateClientViewModel client)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +86,7 @@ namespace RealEstateManagement.Web.Views
         [HttpPost]
         public async Task<IActionResult> Edit(int id, ClientViewModel client)
         {
-            if(id != client.ClientId)
+            if(id != client.ClientId) // How could these id's be different from each other?
             {
                 return NotFound();
             }
@@ -94,7 +95,7 @@ namespace RealEstateManagement.Web.Views
             {
                 try
                 {
-                    _clientService.SaveClient(client.ToClientVo());
+                    _clientService.SaveClient(client.ToClientVo()); // Method returns a Client
                     return RedirectToAction(nameof(Index));
                 }
                 catch(Exception ex)

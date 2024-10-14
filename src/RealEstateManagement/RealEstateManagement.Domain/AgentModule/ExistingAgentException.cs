@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 public class ExistingAgentException : Exception
 {
-    public ExistingAgentException() : base("An agent with this information already exists") 
+    public ExistingAgentException() : base("An agent with this information already exists")
     {
 
     }
 
+}

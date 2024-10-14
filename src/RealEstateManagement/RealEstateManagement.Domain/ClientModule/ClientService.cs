@@ -22,7 +22,7 @@ public class ClientService : IClientService
 
     public List<Client> GetClients()
     {
-        return _clientRepository.GetAllClients();
+        return _clientRepository.GetAllClients(); // Before applying the ViewModel extension method 
     }
 
     public void SaveClient(Client client)
